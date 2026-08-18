@@ -62,41 +62,21 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links (Black & White Luxury Hover) */}
-        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+        {/* Desktop Navigation Links (Luxury Floating Capsule Bar) */}
+        <nav className="hidden lg:flex items-center gap-1 bg-stone-100/80 p-1.5 rounded-full border border-stone-200/80 shadow-2xs backdrop-blur-xs">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-xs uppercase tracking-[0.16em] font-medium transition-colors duration-200 group flex flex-col items-center justify-center ${
+                className={`relative px-4 py-2 rounded-full text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 ${
                   active
-                    ? "text-stone-950 font-bold"
-                    : "text-stone-600 hover:text-black"
+                    ? "bg-white text-stone-950 font-bold shadow-xs border border-stone-200/90 scale-[1.02]"
+                    : "text-stone-600 hover:text-stone-950 hover:bg-white/70 hover:shadow-2xs"
                 }`}
               >
-                <span className="relative z-10 transition-transform duration-200 group-hover:translate-y-[-1px]">
-                  {link.label}
-                </span>
-
-                {/* Black & White Hover Background Pill */}
-                <span
-                  className={`absolute inset-0 rounded-full transition-all duration-200 ${
-                    active
-                      ? "bg-stone-100"
-                      : "bg-transparent group-hover:bg-stone-100/90 scale-95 group-hover:scale-100 opacity-0 group-hover:opacity-100"
-                  }`}
-                />
-
-                {/* Animated Black Bottom Accent Bar */}
-                <span
-                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-stone-900 transition-all duration-300 ${
-                    active
-                      ? "w-6 opacity-100"
-                      : "w-0 opacity-0 group-hover:w-4 group-hover:opacity-100"
-                  }`}
-                />
+                <span>{link.label}</span>
               </Link>
             );
           })}
